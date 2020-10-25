@@ -1,16 +1,23 @@
 package hiber.model;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 @Entity
-@Table(name = "cars")
+@Table
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "model")
+
+    @Column
     private String model;
-    @Column(name = "series")
+
+    @Column
     private int series;
 
     @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
@@ -25,12 +32,12 @@ public Car(String model, int series) {
 
     public String getModel() {
         return model;
-    }
+   }
 
     public void setModel(String model) {
         this.model = model;
     }
-
+    @Transactional
     public int getSeries() {
         return series;
     }

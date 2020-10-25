@@ -12,14 +12,15 @@ public class User {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
-   @Column(name = "name")
+   @Column
    private String firstName;
 
-   @Column(name = "last_name")
+   @Column
    private String lastName;
 
-   @Column(name = "email")
+   @Column
    private String email;
+
 
    @OneToOne(cascade = CascadeType.ALL)
    @JoinColumn(name = "car")
@@ -73,6 +74,11 @@ public class User {
 
    public void setEmail(String email) {
       this.email = email;
+   }
+
+   @Override
+   public String toString() {
+      return firstName + " " + lastName;
    }
 
 }
