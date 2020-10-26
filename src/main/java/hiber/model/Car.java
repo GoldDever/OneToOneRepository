@@ -8,16 +8,16 @@ import javax.persistence.*;
 import javax.transaction.Transactional;
 
 @Entity
-@Table
+
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
+
     private String model;
 
-    @Column
+
     private int series;
 
     @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
